@@ -13,7 +13,9 @@ to use this with different components.
 This CI/CD Workflow is designed as a generic packaging and deployment pipeline. The aim here is to create a pipeline flexible enough to be able to push code of any type through, and prepare it for rapid deployment and management via StackStorm.
 
 
-This workflow subscribes to the 'Convention over C
+This workflow subscribes to the 'Convention over Configuration' view of the world. Any project
+should be able to be used by this pipeline, assuming it follows these conventions:
+
   * CI Portion
     * A project exists on GitHub, and has its outgoing webhook configured to send to StackStorm
     * The project has two scripts designed to ensure the project is setup for  CI
