@@ -15,7 +15,8 @@ class profile::seatshare_frontend_consul(
   }
 
   package { 'seatshare':
-    ensure => $_package_version,
+    ensure  => $_package_version,
+    require => Class['::profile::consul_agent'],
   }
 
   user { 'seatshare':
@@ -42,6 +43,7 @@ class profile::seatshare_frontend_consul(
     require         => [
       Class['ruby::dev'],
       File['/usr/local/bin/bundle'],
+      Package['seatshare'],
     ],
   }
 

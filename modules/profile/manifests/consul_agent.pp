@@ -9,25 +9,23 @@ class profile::consul_agent(
     'datacenter'       => $::datacenter,
   }
 
-  if !defined(Class['role::consul_cluster']) {
-    class { '::consul':
-      config_hash    => $_config_hash,
-      service_enable => true,
-      service_ensure => 'running',
-    }
-
-    # Setup DNSMasq for automatic awesomeness
-    include ::dnsmasq
-    dnsmasq::dnsserver { 'consul':
-      ip     => '127.0.0.1#8600',
-      domain => 'consul',
-    }
+  class { '::consul':
+    config_hash    => $_config_hash,
+    service_enable => true,
+    service_ensure => 'running',
   }
-  ### END Setup Consul ###
-  anchor { 'profile::consul_agent::end': }
-  Class['consul'] -> Anchor['profile::consul_agent::end']
-  Class['dnsmasq'] -> Anchor['profile::consul_agent::end']
 
-  Anchor['profile::consul_agent::end'] -> Exec['apt_update']
-  Anchor['profile::consul_agent::end'] -> Apt_key<||>
+  # Setup DNSMasq for automatic awesomeness
+  class { '::dnsmasq':
+    require => Class['::consul'],
+  }
+  dnsmasq::dnsserver { 'consul':
+    ip     => '127.0.0.1#8600',
+    domain => 'consul',
+  }
+
+  ### END Setup Consul ###
+  anchor { 'profile::consul_consul::end': }
+  Class['consul'] -> Anchor['profile::consul_consul::end']
+  Class['dnsmasq'] -> Anchor['profile::consul_consul::end']
 }

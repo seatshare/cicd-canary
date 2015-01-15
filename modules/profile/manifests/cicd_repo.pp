@@ -1,12 +1,14 @@
-class profile::cicd_repo {
-  $_location = 'http://repo.apt.service.consul'
-
+class profile::cicd_repo(
+  $location    = 'http://apt.service.consul',
+  $key_content = undef,
+  $key         = undef,
+) {
   apt::source { 'cicd':
     ensure      => present,
-    location    => $_location,
+    location    => $location,
     release     => $::lsbdistcodename,
     include_src => false,
-    key         => 'A01FCCCF', # demo@gpg.key
-    key_source  => "${_location}/pubkey.gpg",
+    key         => $key,
+    key_content => $key_content,
   }
 }

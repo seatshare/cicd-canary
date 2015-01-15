@@ -9,6 +9,7 @@ class role::cicd_frontend {
     require => [
       Class['::profile::postgres_client_dev'],
       Class['::profile::nodejs_dev'],
+      Class['::profile::cicd_repo'],
     ],
   }
 }
