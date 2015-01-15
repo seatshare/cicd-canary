@@ -1,3 +1,19 @@
 ---
 classes:
   - 'puppet::masterless'
+
+# CI/CD Setup
+
+## Jenkins Setup
+jenkins::job_config_repo: https://github.com/frymanio/jenkins-job-config.git
+
+## Consul Setup
+consul_cluster::join_cluster:
+  - 10.20.30.2
+  - 10.20.30.3
+  - 10.20.30.4
+consul_agent::join_cluster:
+  - 10.20.30.2
+  - 10.20.30.3
+  - 10.20.30.4
+

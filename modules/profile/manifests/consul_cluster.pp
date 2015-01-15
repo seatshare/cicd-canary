@@ -14,8 +14,9 @@ class profile::consul_cluster(
   }
 
   class { '::consul':
-    config_hash  => $_config_hash,
-    join_cluster => $join_cluster,
+    config_hash    => $_config_hash,
+    service_enable => true,
+    service_ensure => 'running',
   }
   ### END Setup Consul ###
 

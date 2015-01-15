@@ -1,7 +1,7 @@
 class role::cicd_infrastructure {
   ## General Management
   include ::profile::st2_remote_admin
-  include ::profile::consul_agent
+  include ::profile::consul_cluster
 
   ## Apt Repository
   include ::profile::apt_package_server_consul

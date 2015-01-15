@@ -5,24 +5,11 @@
 # worker could be the origin of a job in need of the keys
 # endpoint is any target for stanley to need to access
 class profile::st2_remote_admin(
-  $worker = false,
-  $endpoint = true,
+  $client = true,
+  $server = false,
 ) {
-  if $worker {
-    file { '/home/stanley/.ssh/st2_stanley_key':
-      ensure  => file,
-      owner   => 'stanley',
-      group   => 'stanley',
-      mode    => '0400',
-      content => hiera('st2::stanley::key', ''),
-    }
-  }
-  if $endpoint {
-    ssh_authorized_key { 'st2-stanley':
-      user    => 'stanley',
-      type    => 'ssh-rsa',
-      key     => hiera('st2::stanley::pubkey', ''),
-      require => File['/home/stanley/.ssh'],
-    }
+  class { '::st2::stanley':
+    client => $client,
+    server => $server,
   }
 }

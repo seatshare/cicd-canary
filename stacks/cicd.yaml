@@ -8,36 +8,44 @@ infra:
   <<: *defaults
   hostname: infra
   memory: 2048
-  facts:
-    role: cicd_infrastructure
+  puppet:
+    facts:
+      role: cicd_infrastructure
+  private_networks:
+    - 10.20.30.2
 st2server:
   <<: *defaults
   hostname: st2server
   memory: 1024
-  facts:
-    role: st2_server
-  mounts:
-    - /opt/stackstorm
+  puppet:
+    facts:
+      role: st2server
   private_networks:
-    - 10.20.30.2
+    - 10.20.30.3
 jenkins:
   <<: *defaults
   hostname: jenkins
-  facts:
-    role: cicd_jenkins
+  puppet:
+    facts:
+      role: cicd_jenkins
   box: puppetlabs/ubuntu-12.04-64-puppet
+  private_networks:
+    - 10.20.30.4
 web1:
   <<: *defaults
   hostname: web1
-  facts:
-    role: cicd_frontend
+  puppet:
+    facts:
+      role: cicd_frontend
 web2:
   <<: *defaults
   hostname: web2
-  facts:
-    role: cicd_frontend
+  puppet:
+    facts:
+      role: cicd_frontend
 web3:
   <<: *defaults
   hostname: web3
-  facts:
-    role: cicd_frontend
+  puppet:
+    facts:
+      role: cicd_frontend

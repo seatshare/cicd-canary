@@ -12,7 +12,6 @@ class profile::consul_agent(
   if !defined(Class['role::consul_cluster']) {
     class { '::consul':
       config_hash    => $_config_hash,
-      join_cluster   => $join_cluster,
       service_enable => true,
       service_ensure => 'running',
     }

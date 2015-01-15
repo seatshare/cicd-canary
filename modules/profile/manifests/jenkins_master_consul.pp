@@ -10,6 +10,13 @@ class profile::jenkins_master_consul {
     'notification',
   ]: }
 
+  class { '::python':
+    version    => 'system',
+    pip        => true,
+    dev        => true,
+    virtualenv => true,
+  }
+
   # GitHub SSH Setup
   file { 'ssh-key-directory':
     ensure  => directory,
