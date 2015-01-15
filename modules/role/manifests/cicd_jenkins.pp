@@ -1,8 +1,7 @@
 class role::cicd_jenkins {
   ## General Management
   include ::profile::st2_remote_admin
-  include ::profile::consul_agent
-  include ::profile::cicd_repo
+  include ::profile::consul_cluster
 
   ## CI Build
   include ::profile::ruby_dev

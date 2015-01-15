@@ -24,4 +24,10 @@ class profile::consul_agent(
     }
   }
   ### END Setup Consul ###
+  anchor { 'profile::consul_agent::end': }
+  Class['consul'] -> Anchor['profile::consul_agent::end']
+  Class['dnsmasq'] -> Anchor['profile::consul_agent::end']
+
+  Anchor['profile::consul_agent::end'] -> Exec['apt_update']
+  Anchor['profile::consul_agent::end'] -> Apt_key<||>
 }

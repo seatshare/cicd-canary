@@ -2,6 +2,7 @@ class profile::jenkins_master_consul {
   ### Jenkins Server Config ###
   class { '::jenkins':
     cli => true,
+    before => Class['jenkins_job_builder'],
   }
   jenkins::plugin { [
     'git',
@@ -57,7 +58,7 @@ class profile::jenkins_master_consul {
 
   ### Jenkins Infrastructure as Code (IaC) config ###
   $_config_repo = hiera('jenkins::job_config_repo', undef)
-  $_update_jenkins_jobs_cmd = 'jenkins-jobs --conf /etc/jenkins_jobs/jenkins_jobs.ini update /etc/jenkins_jobs/conf'
+  $_update_jenkins_jobs_cmd = 'sleep 20 && jenkins-jobs --conf /etc/jenkins_jobs/jenkins_jobs.ini update /etc/jenkins_jobs/conf'
   if $_config_repo {
     vcsrepo { '/etc/jenkins_jobs/conf':
       ensure   => present,
