@@ -1,0 +1,43 @@
+---
+defaults: &defaults
+  domain: stackstorm.net
+  memory: 512
+  cpus: 1
+  box: puppetlabs/ubuntu-14.04-64-puppet
+infra:
+  <<: *defaults
+  hostname: infra
+  memory: 2048
+  facts:
+    role: cicd_infrastructure
+st2server:
+  <<: *defaults
+  hostname: st2server
+  memory: 1024
+  facts:
+    role: st2_server
+  mounts:
+    - /opt/stackstorm
+  private_networks:
+    - 10.20.30.2
+jenkins:
+  <<: *defaults
+  hostname: jenkins
+  facts:
+    role: cicd_jenkins
+  box: puppetlabs/ubuntu-12.04-64-puppet
+web1:
+  <<: *defaults
+  hostname: web1
+  facts:
+    role: cicd_frontend
+web2:
+  <<: *defaults
+  hostname: web2
+  facts:
+    role: cicd_frontend
+web3:
+  <<: *defaults
+  hostname: web3
+  facts:
+    role: cicd_frontend

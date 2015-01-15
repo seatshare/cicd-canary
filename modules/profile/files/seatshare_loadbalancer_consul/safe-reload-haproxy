@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# SYN Reload Hack
+
+
+# Define our actions
+checkconfig() {
+    # Check the config file for errors
+    /usr/sbin/haproxy -c -q -f /etc/haproxy/haproxy.cfg
+    if [[ $? -ne 0 ]]; then
+            echo "Errors found in configuration file."
+            return 1
+    fi
+
+    # We're OK!
+    return 0
+}
+
+syn_reload() {
+    iptables -I INPUT -p tcp -m multiport --dports 80,443 --syn -j DROP && sleep 0.5 && \
+    /etc/init.d/haproxy reload;
+    iptables -D INPUT -p tcp -m multiport --dports 80,443 --syn -j DROP
+}
+
+if [[ $(checkconfig) -eq 0 ]]; then
+  syn_reload
+fi
+
