@@ -5,15 +5,16 @@ classes:
 # CI/CD Setup
 
 ## Jenkins Setup
-jenkins::job_config_repo: https://github.com/frymanio/jenkins-job-config.git
+### Repository with definitins from jenkins-job-builder
+jenkins::job_config_reop: # Repository
 
 ## Consul Setup
+### Requires at least three IPs.
 consul_cluster::join_cluster:
-  - 10.20.30.2
-  - 10.20.30.3
-  - 10.20.30.4
+  - <IP 1>
+  - <IP 2>
+  - <IP 3>
 consul_agent::join_cluster:
-  - 10.20.30.2
-  - 10.20.30.3
-  - 10.20.30.4
-
+  - <IP 1>
+  - <IP 2>
+  - <IP 3>

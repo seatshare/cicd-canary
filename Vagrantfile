@@ -140,6 +140,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |vagrant|
       end
 
       n.vm.provider 'digital_ocean' do |digitalocean, override|
+        override.vm.box               = 'digital_ocean'
+        override.vm.box_url           = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
         override.ssh.private_key_path = config['do']['ssh_key_path']
         digitalocean.token            = config['do']['token']
         digitalocean.image            = config['do']['image']

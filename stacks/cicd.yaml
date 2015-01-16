@@ -13,6 +13,11 @@ infra:
       role: cicd_infrastructure
   private_networks:
     - 10.20.30.2
+  do:
+    image: ubuntu-14-04-x64
+    region: nyc3
+    size: 2gb
+
 st2server:
   <<: *defaults
   hostname: st2server
@@ -22,6 +27,10 @@ st2server:
       role: st2server
   private_networks:
     - 10.20.30.3
+  do:
+    image: ubuntu-14-04-x64
+    region: nyc3
+    size: 1gb
 jenkins:
   <<: *defaults
   hostname: jenkins
@@ -31,21 +40,37 @@ jenkins:
   box: puppetlabs/ubuntu-12.04-64-puppet
   private_networks:
     - 10.20.30.4
+  do:
+    image: ubuntu-12-04-x64
+    region: nyc3
+    size: 1gb
 web1:
   <<: *defaults
   hostname: web1
   puppet:
     facts:
       role: cicd_frontend
+  do:
+    image: ubuntu-14-04-x64
+    region: nyc3
+    size: 1gb
 web2:
   <<: *defaults
   hostname: web2
   puppet:
     facts:
       role: cicd_frontend
+  do:
+    image: ubuntu-14-04-x64
+    region: nyc3
+    size: 1gb
 web3:
   <<: *defaults
   hostname: web3
   puppet:
     facts:
       role: cicd_frontend
+  do:
+    image: ubuntu-14-04-x64
+    region: nyc3
+    size: 1gb
