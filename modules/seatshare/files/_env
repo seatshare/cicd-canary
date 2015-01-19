@@ -1,0 +1,30 @@
+export SEATSHARE_S3_KEY=the_s3_key
+export SEATSHARE_S3_SECRET=the_s3_secret
+export SEATSHARE_S3_BUCKET=lockbox.seatsha.re
+export SEATSHARE_S3_PUBLIC=https://lockbox.myseatshare.com
+
+export ADMIN_API_KEY=admin_api_key
+
+export MAILCHIMP_API_KEY=the_api_key
+export MAILCHIMP_LIST_ID=the_list_id
+
+export SIMPLE_FORM_API_TOKEN=the_private_token
+export SIMPLE_FORM_FORM_API_TOKEN=the_public_token
+
+export SODA_USERNAME=the_soda_username
+export SODA_PASSWORD=the_soda_password
+export SODA_ENVIRONMENT=development
+
+export TWILIO_ACCOUNT_SID=some_sid
+export TWILIO_AUTH_TOKEN=some_token
+export TWILIO_OUTBOUND_NUMBER=the_number
+
+# These values are production only
+# export MANDRILL_SMTP_USER=mandrill_user
+# export MANDRILL_SMTP_PASS=mandril_password
+# export MANDRILL_SMTP_HOST=mandrill_hostname
+# export GOOGLE_ANALYTICS_ID=google_analytics_id
+# export MIXPANEL_API_KEY=mixpanel_api_key
+
+# These values are development only
+# export USE_MAILCATHER=true
