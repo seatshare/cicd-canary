@@ -3,14 +3,14 @@
 
 ## Need to install dotenv in your vagrant environment
 ## vagrant plugin install vagrant-dotenv
-['dotenv', 'deep_merge'].each do |plugin|
+['dotenv', 'deep_merge', 'vagrant-digitalocean'].each do |plugin|
   system("vagrant plugin install #{plugin}") unless Vagrant.has_plugin?(plugin)
 end
 
 begin
   Dotenv.load
 rescue => e
-  puts 'problem loading dotenv'.
+  puts 'problem loading dotenv'
   puts e
   exit 1
 end

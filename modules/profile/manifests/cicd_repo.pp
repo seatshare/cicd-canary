@@ -1,7 +1,6 @@
 class profile::cicd_repo(
   $location    = 'http://apt.service.consul',
-  $key_content = undef,
-  $key         = undef,
+  $key         = 'A01FCCCF',
 ) {
   apt::source { 'cicd':
     ensure      => present,
@@ -9,6 +8,6 @@ class profile::cicd_repo(
     release     => $::lsbdistcodename,
     include_src => false,
     key         => $key,
-    key_content => $key_content,
+    key_server  => 'pgp.mit.edu',
   }
 }

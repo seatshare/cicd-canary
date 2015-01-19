@@ -21,7 +21,7 @@ mod 'puppetlabs/rabbitmq',           '4.1.0'
 mod 'puppetlabs/ruby',               '0.4.0'
 mod 'puppetlabs/stdlib',             '4.4.0'
 mod 'puppetlabs/vcsrepo',            '1.2.0'
-mod 'stackstorm/st2',                '0.1.2'
+mod 'stackstorm/st2',                '0.1.3'
 
 mod 'consul',
   :git => 'https://github.com/jfryman/puppet-consul.git',

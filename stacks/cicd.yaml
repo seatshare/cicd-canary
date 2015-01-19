@@ -30,7 +30,7 @@ st2server:
   do:
     image: ubuntu-14-04-x64
     region: nyc3
-    size: 1gb
+    size: 4gb
 jenkins:
   <<: *defaults
   hostname: jenkins

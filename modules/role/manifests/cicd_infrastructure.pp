@@ -1,6 +1,9 @@
 class role::cicd_infrastructure {
   ## General Management
-  include ::profile::st2_remote_admin
+  class { '::profile::st2_remote_admin':
+    client => true,
+    server => true,
+  }
   include ::profile::consul_cluster
 
   ## Apt Repository
