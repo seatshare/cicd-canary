@@ -5,8 +5,7 @@ This project highlights the use of StackStorm in a generic, deployable CI/CD pip
 is built off of [st2-workroom](https://github.com/StackStorm/st2workroom) and can be deployed
 to a local Vagrant environment, deployed to Digital Ocean, or deployed to a local set of servers.
 
-For use on: Debian/Ubuntu systems. Please see [Expansion](#Expansion) for more details on how
-to use this with different components.
+For use on: Debian/Ubuntu systems. If you would like to see this on a different platform, please let us know at <support@stackstorm.com>
 
 # Overview
 
@@ -80,6 +79,4 @@ This workflow was designed initially to cover the most generic use-case possible
 17. If no failures, user deploys new package to production.
 18. [Deploy :: Production] StackStorm updates the currently advertised version to the currently deployed canary version
 19. [Deploy :: Production] StackStorm tells all production hosts a package has been updated, and updates the servers.
-
-## Expansion
 
