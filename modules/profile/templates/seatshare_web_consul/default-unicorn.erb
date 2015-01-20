@@ -1,0 +1,18 @@
+# Configuration variables for <%= @name %>. This file is being managed by
+# Puppet; changes to this file will be reverted.
+
+DAEMON="/usr/bin/bundle"
+DAEMON_OPTS="<%= @daemon_opts %>"
+
+# This configuration information is needed if the application is being launched
+# with bundler. The init script will need to chdir into the approot when
+# running `bundle exec` so that it can locate the Gemfile.
+APPROOT="<%= @approot %>"
+
+NAME="<%= @name %>"
+
+ENV="<%= @rack_env %>"
+PIDFILE="<%= @pidfile %>"
+
+export RAILS_ENV="$ENV"
+export RACK_ENV="$ENV"

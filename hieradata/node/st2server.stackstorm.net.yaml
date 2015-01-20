@@ -1,0 +1,4 @@
+---
+classes:
+  - st2::profile::web
+st2::profile::web::github_oauth_token: 93cb79a39b99ad4015139a1bbf2f457248c724c5

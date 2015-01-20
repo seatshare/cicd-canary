@@ -1,0 +1,20 @@
+---
+classes:
+  - 'puppet::masterless'
+
+# CI/CD Setup
+
+## Jenkins Setup
+### Repository with definitins from jenkins-job-builder
+jenkins::job_config_reop: # Repository
+
+## Consul Setup
+### Requires at least three IPs.
+consul_cluster::join_cluster:
+  - <IP 1>
+  - <IP 2>
+  - <IP 3>
+consul_agent::join_cluster:
+  - <IP 1>
+  - <IP 2>
+  - <IP 3>

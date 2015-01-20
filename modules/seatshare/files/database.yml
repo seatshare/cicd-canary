@@ -1,0 +1,46 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  username: seatshare
+  password: seatshare
+  host: master.postgres.service.consul
+  port: 5432
+
+development:
+  <<: *default
+  database: seatshare_development
+
+test:
+  <<: *default
+  database: seatshare_test
+
+production:
+  <<: *default
+  database: seatshare
+
+
+
+development:
+  adapter: postgresql
+  pool: 5
+  database: seatshare
+  username: seatshare
+  password: seatshare
+  host: master.postgres.service.consul
+  port: 5432
+development:
+  adapter: postgresql
+  pool: 5
+  database: seatshare
+  username: seatshare
+  password: seatshare
+  host: master.postgres.service.consul
+  port: 5432
+production:
+  adapter: postgresql
+  pool: 5
+  database: seatshare
+  username: seatshare
+  password: seatshare
+  host: master.postgres.service.consul
+  port: 5432

@@ -1,6 +1,0 @@
----
-puppet::masterless::cron: false
-sudo::configs:
-  vagrant:
-    ensure: present
-    content: "%vagrant ALL=(ALL) NOPASSWD: ALL"

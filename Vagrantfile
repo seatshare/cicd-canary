@@ -3,14 +3,14 @@
 
 ## Need to install dotenv in your vagrant environment
 ## vagrant plugin install vagrant-dotenv
-['dotenv', 'deep_merge'].each do |plugin|
+['dotenv', 'deep_merge', 'vagrant-digitalocean'].each do |plugin|
   system("vagrant plugin install #{plugin}") unless Vagrant.has_plugin?(plugin)
 end
 
 begin
   Dotenv.load
 rescue => e
-  puts 'problem loading dotenv'.
+  puts 'problem loading dotenv'
   puts e
   exit 1
 end
@@ -140,6 +140,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |vagrant|
       end
 
       n.vm.provider 'digital_ocean' do |digitalocean, override|
+        override.vm.box               = 'digital_ocean'
+        override.vm.box_url           = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
         override.ssh.private_key_path = config['do']['ssh_key_path']
         digitalocean.token            = config['do']['token']
         digitalocean.image            = config['do']['image']
@@ -169,7 +171,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |vagrant|
       ## Bootstrap using different provisioners.
       case PROVISIONER
       when 'puppet-apply' then
-        n.vm.synced_folder 'puppet', '/opt/puppet', type: @synced_folder_type
+        n.vm.synced_folder '.', '/opt/puppet', type: @synced_folder_type
         n.vm.provision 'shell', inline: '/opt/puppet/script/bootstrap-linux'
         n.vm.provision 'shell', inline: <<-EOF
           # Skips the `git pull` step, since you're working out of it directly
