@@ -5,7 +5,7 @@ frontend http-in
     # to the regular pool. However, if for whatever reason
     # a person needs to direct 100% of traffic to the canaries,
     # they can do is with a header (X-SeatShare-Canary)
-    acl is-canary hdr(X-SeatShare-Canary) -i true
+    acl is-canary hdr_sub(X-Seatshare-Canary) true
     use_backend seatshare-canary if is-canary
 
     default_backend seatshare-production
